@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:title="1- Disposiciones Generales">
+        <menu>
+            <item
+                android:id="@+id/menu_disposicionesgral"
+                android:title="· Disposiciones Generales"/>
+        </menu>
+    </item>
+
+    <item
+        android:title="2- Autoridades y Personal">
+        <menu>
+            <item
+                android:id="@+id/menu_autoridades_nombramientos"
+                android:title="· Nombramientos, Ceses Y Otras Situaciones"/>
+            <item
+                android:id="@+id/menu_autoridades_cursos"
+                android:title="· Cursos, Oposiciones y Concursos"/>
+            <item
+                android:id="@+id/menu_autoridades_otros"
+                android:title="· Otros"/>
+        </menu>
+    </item>
+
+    <item android:title="3- Contratación Administrativa">
+        <menu>
+            <item
+                android:id="@+id/menu_contratacion"
+                android:title="· Contratación Administrativa"/>
+        </menu>
+    </item>
+
+    <item
+        android:title="4- Economía y Hacienda">
+        <menu>
+            <item
+                android:id="@+id/menu_economia_presupuestos"
+                android:title="· Actuaciones en Materia Presupuestaria"/>
+            <item
+                android:id="@+id/menu_economia_fiscal"
+                android:title="· Actuaciones en Materia Fiscal"/>
+            <item
+                android:id="@+id/menu_economia_seguridadsocial"
+                android:title="· Actuaciones en materia de Seguridad Social"/>
+            <item
+                android:id="@+id/menu_economia_otros"
+                android:title="· Otros"/>
+        </menu>
+    </item>
+
+    <item android:title="5- Expropiación Forzosa">
+        <menu>
+            <item
+                android:id="@+id/menu_expropiacion"
+                android:title="· Expropiación Forzosa"/>
+        </menu>
+    </item>
+
+    <item android:title="6- Subvenciones y Ayudas">
+        <menu>
+            <item
+                android:id="@+id/menu_subvenciones"
+                android:title="· Subvenciones y Ayudas"/>
+        </menu>
+    </item>
+
+    <item
+        android:title="7- Otros Anuncios">
+        <menu>
+            <item
+                android:id="@+id/menu_otros_urbanismo"
+                android:title="· Urbanismo"/>
+            <item
+                android:id="@+id/menu_otros_medioambiente"
+                android:title="· Medio Ambiente y Energía"/>
+            <item
+                android:id="@+id/menu_otros_convenios"
+                android:title="· Estatutos y Convenios Colectivos"/>
+            <item
+                android:id="@+id/menu_otros_particulares"
+                android:title="· Particulares"/>
+            <item
+                android:id="@+id/menu_otros_varios"
+                android:title="· Otros Anuncios: Varios"/>
+        </menu>
+    </item>
+
+    <item
+        android:title="8- Procedimientos Judiciales">
+        <menu>
+            <item
+                android:id="@+id/menu_proce_subastas"
+                android:title="· Subastas"/>
+            <item
+                android:id="@+id/menu_proce_otros"
+                android:title="· Otros Anuncios"/>
+        </menu>
+    </item>
+
+    <item
+        android:title="9- Elecciones">
+        <menu>
+            <item
+                android:id="@+id/menu_elecciones"
+                android:title="· Elecciones"/>
+        </menu>
+    </item>
+
+</menu>
