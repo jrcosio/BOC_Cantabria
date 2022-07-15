@@ -21,7 +21,7 @@
         android:layout_height="match_parent">
 
         <TextView
-            android:id="@+id/txEtiqueta1"
+            android:id="@+id/tvOrganismo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
@@ -89,7 +89,7 @@
             android:layout_marginTop="2dp"
             android:text="Descripción"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txEtiqueta1" />
+            app:layout_constraintTop_toBottomOf="@+id/tvOrganismo" />
 
         <Button
             android:id="@+id/btnDownloadPdf"

@@ -218,7 +218,7 @@ class MainActivity : AppCompatActivity(), ListadoBocFragment.CallbackFavorito {
                 val parser1 = XmlPullParserHandler(listaFavoritos)
 
                 //Descarga de la web del boc.cantabria.es el RSS
-                val response = URL(url).readText()
+                val response = URL(url.url).readText()
                 //Convierte el fichero de texto XML a Lista de Objetos
                 val tempListBoc = parser1.parse(response.byteInputStream())
                 //Guarda la sección obtenida en el arraylist principal
@@ -309,4 +309,12 @@ class MainActivity : AppCompatActivity(), ListadoBocFragment.CallbackFavorito {
         pref?.edit()?.putString("LISTAFAVORITOS",json)?.apply()
     }
 
+    /**
+     * Método onRestart
+     */
+    @RequiresApi(Build.VERSION_CODES.O)
+    override fun onRestart() {
+        super.onRestart()
+        obtenerDatosBoc(true,true)
+    }
 }

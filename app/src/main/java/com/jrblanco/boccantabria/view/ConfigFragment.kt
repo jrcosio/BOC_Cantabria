@@ -8,12 +8,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.jrblanco.boccantabria.adapter.ListadoBocAdapter
+import com.jrblanco.boccantabria.adapter.ListadoUrlBocAdapter
 import com.jrblanco.boccantabria.databinding.FragmentConfigBinding
 import com.jrblanco.boccantabria.databinding.FragmentListadoBocBinding
+import com.jrblanco.boccantabria.model.UrlBoc
 
 class ConfigFragment : Fragment() {
 
     private lateinit var binding: FragmentConfigBinding
+
+    private var listaUrl = ArrayList<UrlBoc>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -21,7 +27,6 @@ class ConfigFragment : Fragment() {
     ): View? {
 
         binding = FragmentConfigBinding.inflate(layoutInflater)
-
 
         val pref: SharedPreferences? = context?.getSharedPreferences("com.jrblanco.temaoscuro",0)
 
@@ -41,7 +46,16 @@ class ConfigFragment : Fragment() {
             pref?.edit()?.putBoolean("cambiadotema",true)?.apply()
         }
 
+
+        initRecyclerView()
+
         return binding.root
+    }
+
+
+    private fun initRecyclerView() {
+        binding.rvUrlBOC.layoutManager = LinearLayoutManager(context)
+        binding.rvUrlBOC.adapter = ListadoUrlBocAdapter(UrlBoc.listadoRSS)
     }
 
 

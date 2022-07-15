@@ -62,11 +62,7 @@ class XmlPullParserHandler(val listaFavoritos:ArrayList<ItemBoc>) {
                         item_rss!!.id = text?.substring(text?.indexOf("=")?.plus(1)!!)
 
                     } else if (tagname.equals("pubDate", ignoreCase = true) && check) {
-                        //val result = text.split("-")
 
-                       // item_rss!!.fecha = LocalDate.of(result[0].toInt(),
-                        //    result[1].toInt(),
-                        //    result[2].toInt())
                         item_rss!!.fecha = text?.toString()
                     }
                 }
@@ -75,7 +71,7 @@ class XmlPullParserHandler(val listaFavoritos:ArrayList<ItemBoc>) {
         } catch (e: XmlPullParserException) {
             e.printStackTrace()
         }
-        listaRSS.add(ItemBoc("","","",null,"",false))
+       // listaRSS.add(ItemBoc("","","",null,"",false))
         return listaRSS
     }
 }

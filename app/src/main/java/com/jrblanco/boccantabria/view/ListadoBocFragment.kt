@@ -12,7 +12,7 @@ import com.jrblanco.boccantabria.databinding.FragmentListadoBocBinding
 import com.jrblanco.boccantabria.model.ItemBoc
 import kotlin.ClassCastException
 
-class ListadoBocFragment(val listaBoc:List<ItemBoc>) : Fragment() {
+class ListadoBocFragment(private val listaBoc:List<ItemBoc>) : Fragment() {
 
     private lateinit var binding: FragmentListadoBocBinding
 
