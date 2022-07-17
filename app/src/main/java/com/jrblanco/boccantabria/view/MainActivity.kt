@@ -1,9 +1,14 @@
 package com.jrblanco.boccantabria.view
 
+import android.content.Context
+import android.content.DialogInterface
 import android.content.SharedPreferences
+import android.net.ConnectivityManager
+import android.net.NetworkCapabilities
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
@@ -139,7 +144,7 @@ class MainActivity : AppCompatActivity(), ListadoBocFragment.CallbackFavorito {
                     if (!rssBoc.isNullOrEmpty()) {
                         cargarFragment(ListadoBocFragment(rssBoc[seccionBOC]))
                     } else {
-                        Toast.makeText(this,"No hay datos para visualizar",Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this,R.string.no_datos,Toast.LENGTH_SHORT).show()
                     }
                     true
                 }
@@ -147,7 +152,7 @@ class MainActivity : AppCompatActivity(), ListadoBocFragment.CallbackFavorito {
                     if (!listaFavoritos.isNullOrEmpty()) {
                         cargarFragment(ListadoBocFragment(listaFavoritos))
                     } else {
-                        Toast.makeText(this,"No hay datos para visualizar",Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this,R.string.no_datos,Toast.LENGTH_SHORT).show()
                     }
                     true
                 }
@@ -187,7 +192,7 @@ class MainActivity : AppCompatActivity(), ListadoBocFragment.CallbackFavorito {
         if (!rssBoc.isNullOrEmpty()) {
             cargarFragment(ListadoBocFragment(rssBoc[seccionBOC]))
         } else {
-            Toast.makeText(this,"No hay datos para visualizar",Toast.LENGTH_SHORT).show()
+            Toast.makeText(this,R.string.no_datos,Toast.LENGTH_SHORT).show()
         }
     }
 
@@ -198,6 +203,20 @@ class MainActivity : AppCompatActivity(), ListadoBocFragment.CallbackFavorito {
      */
     @RequiresApi(Build.VERSION_CODES.O)
     private fun obtenerDatosBoc(animacion:Boolean = false,mostrarRecyclerView:Boolean = true){
+
+        //Comprueba si tiene internet el dispositivo y si no lo hay muestra mensaje y no obtiene datos
+        if (!tengoInternet(this)) {
+            val dialogBuilder = AlertDialog.Builder(this)
+                .setTitle("Error de Conexión a Internet")
+                .setMessage("En este momento es dispositivo no tiene conexión a INTERNET")
+                .setCancelable(false)
+                .setPositiveButton("Aceptar", DialogInterface.OnClickListener{
+                    dialog, id -> dialog.cancel()
+                })
+                .create()
+                .show()
+            return
+        }
 
         val builder = AlertDialog.Builder(this)
         val inflater = this.layoutInflater
@@ -229,7 +248,7 @@ class MainActivity : AppCompatActivity(), ListadoBocFragment.CallbackFavorito {
                 if (!rssBoc.isNullOrEmpty()) {
                     cargarFragment(ListadoBocFragment(rssBoc[seccionBOC]))
                 } else {
-                    Toast.makeText(this,"No hay datos para visualizar",Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this,R.string.no_datos,Toast.LENGTH_SHORT).show()
                 }
             }
 
@@ -316,5 +335,27 @@ class MainActivity : AppCompatActivity(), ListadoBocFragment.CallbackFavorito {
     override fun onRestart() {
         super.onRestart()
         obtenerDatosBoc(true,true)
+    }
+
+    /**
+     * Metodo que verifica si el dispositivo tienen internet
+     */
+    private fun tengoInternet(context: Context): Boolean {
+        val connectivityManager = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        val capabilities =
+            connectivityManager.getNetworkCapabilities(connectivityManager.activeNetwork)
+        if (capabilities != null) {
+            if (capabilities.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR)) {
+                Log.i("Internet", "NetworkCapabilities.TRANSPORT_CELLULAR")
+                return true
+            } else if (capabilities.hasTransport(NetworkCapabilities.TRANSPORT_WIFI)) {
+                Log.i("Internet", "NetworkCapabilities.TRANSPORT_WIFI")
+                return true
+            } else if (capabilities.hasTransport(NetworkCapabilities.TRANSPORT_ETHERNET)) {
+                Log.i("Internet", "NetworkCapabilities.TRANSPORT_ETHERNET")
+                return true
+            }
+        }
+        return false
     }
 }
