@@ -152,7 +152,7 @@ class MainActivity : AppCompatActivity(), ListadoBocFragment.CallbackFavorito {
                     if (!listaFavoritos.isNullOrEmpty()) {
                         cargarFragment(ListadoBocFragment(listaFavoritos))
                     } else {
-                        Toast.makeText(this,R.string.no_datos,Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this,R.string.no_datos_fav,Toast.LENGTH_SHORT).show()
                     }
                     true
                 }
