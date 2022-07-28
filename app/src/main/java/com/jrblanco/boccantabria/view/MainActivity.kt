@@ -338,7 +338,7 @@ class MainActivity : AppCompatActivity(), ListadoBocFragment.CallbackFavorito {
     }
 
     /**
-     * Metodo que verifica si el dispositivo tienen internet
+     * Metodo que verifica si el dispositivo tiene internet
      */
     private fun tengoInternet(context: Context): Boolean {
         val connectivityManager = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager

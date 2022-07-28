@@ -52,7 +52,11 @@ class XmlPullParserHandler(val listaFavoritos:ArrayList<ItemBoc>) {
                     } else if (tagname.equals("title", ignoreCase = true) && check) {
                         val result = text.split(":")
 
-                        item_rss!!.organismo = result[0]    //Del title, extrae la primera parte que ques el organismo
+                        if (result[0].equals("null")) {
+                            item_rss!!.organismo = "MANCOMUNIDAD, CONCEJU U OTRO"
+                        }else {
+                            item_rss!!.organismo = result[0]    //Del title, extrae la primera parte que que ess el organismo
+                        }
                         item_rss!!.descripcion = result[1].substring(1) // La segunda parte es la descipción deñ BOC
 
                     } else if (tagname.equals("link", ignoreCase = true) && check) {
