@@ -7,5 +7,5 @@ APK de pruebas: ![](boc.apk) .apk/boc.apk
 
 #Capturas
 ------------------------------------------------------------------------------------------
-![Captura 1](.imagenes/Cap1.png)  ![Captura 2](.imagenes/Cap2.png) ![Captura 3](.imagenes/Cap3.png)
+![Captura 1](https://github.com/jrcosio/BOC_Cantabria/blob/main/imagenes/cap1.png)  ![Captura 2](https://github.com/jrcosio/BOC_Cantabria/blob/main/imagenes/cap2.png) ![Captura 3](https://github.com/jrcosio/BOC_Cantabria/blob/main/imagenes/cap3.png)
 
