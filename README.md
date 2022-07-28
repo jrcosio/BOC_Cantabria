@@ -3,7 +3,7 @@
 
 https://play.google.com/store/apps/details?id=com.jrblanco.boccantabria
 
-APK de pruebas: ![](boc.apk) .apk/boc.apk
+APK de pruebas: ![](boc.apk) https://github.com/jrcosio/BOC_Cantabria/blob/main/apk/boc.apk
 
 #Capturas
 ------------------------------------------------------------------------------------------
