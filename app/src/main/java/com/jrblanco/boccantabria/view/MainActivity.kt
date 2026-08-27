@@ -16,6 +16,9 @@ import androidx.annotation.RequiresApi
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.updatePadding
 import androidx.fragment.app.Fragment
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
@@ -62,6 +65,9 @@ class MainActivity : AppCompatActivity(), ListadoBocFragment.CallbackFavorito {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        //--- Reserva el hueco de las barras del sistema (obligatorio desde targetSdk 35)
+        ajustarBarrasDelSistema()
+
         //--- Titulo en el ActionBar
         supportActionBar?.title = " BOC Cantabria"
         //--- Icono en el ActionBar
@@ -96,6 +102,19 @@ class MainActivity : AppCompatActivity(), ListadoBocFragment.CallbackFavorito {
             true
         }
 
+    }
+
+    /**
+     * Desde targetSdk 35 el sistema dibuja la app de borde a borde y deja de reservar el hueco de la
+     * barra de navegación. Se añade ese hueco como relleno inferior del BottomAppBar para que
+     * "Principal" y "Favoritos" no queden bajo la barra de gestos.
+     */
+    private fun ajustarBarrasDelSistema() {
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(android.R.id.content)) { vista, insets ->
+            val barras = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            binding.bottomAppBar.updatePadding(bottom = barras.bottom)
+            ViewCompat.onApplyWindowInsets(vista, insets) //Deja seguir el reparto normal al DrawerLayout
+        }
     }
 
     /**
